@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/admin.css">
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <section class="admin-dashboard">
+        <h1>Admin Dashboard</h1>
+    
+        <h2>Manage Products</h2>
+        <form action="/add_product" method="POST">
+            <input type="text" name="name" placeholder="Product Name" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <input type="number" name="price" placeholder="Price" required>
+            <button type="submit">Add Product</button>
+        </form>
+    
+        <h3>Product List</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>${{ product.price }}</td>
+                <td>
+                    <form action="/add_product" method="POST">
+                        <input type="text" name="name" placeholder="Product Name" required>
+                        <textarea name="description" placeholder="Description" required></textarea>
+                        <input type="number" name="price" placeholder="Price" step="0.01" required>
+                        <button type="submit">Add Product</button>
+                    </form>
+                    
+                </td>
+                <td>
+                    <form action="/update_product/{{ product.id }}" method="POST">
+                        <input type="text" name="name" value="{{ product.name }}" required>
+                        <input type="text" name="description" value="{{ product.description }}" required>
+                        <input type="number" name="price" value="{{ product.price }}" required>
+                        <button type="submit">Update</button>
+                    </form>
+                    <a href="/delete_product/{{ product.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+    {% endblock %}
+    
+</html>

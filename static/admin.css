@@ -1,0 +1,54 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #673AB7;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #673AB7;
+    color: #fff;
+}
+
+td {
+    background: #f9f9f9;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input, button {
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+button {
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #45a049;
+}

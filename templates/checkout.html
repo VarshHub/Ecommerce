@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; }
+        .container { width: 90%; max-width: 800px; margin: 30px auto; background-color: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        h1 { color: #007bff; margin-bottom: 25px; text-align: center; }
+        .checkout-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding: 20px 0; }
+        .checkout-item:last-child { border-bottom: none; }
+        .checkout-item .product-info { display: flex; align-items: center; }
+        .checkout-item .product-info img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 20px; }
+        .checkout-item .product-details h2 { margin: 0; font-size: 1.1rem; }
+        .checkout-item .product-details p { margin: 5px 0; color: #777; }
+        .checkout-item .product-price { font-weight: 600; font-size: 1.1rem; }
+        .total { text-align: right; margin-top: 30px; font-size: 1.2rem; font-weight: 600; color: #007bff; }
+        .form-section { margin-top: 30px; }
+        .form-section h2 { color: #007bff; margin-bottom: 15px; }
+        .form-section input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .form-section button { padding: 12px 20px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease; }
+        .form-section button:hover { background-color: #218838; }
+        .continue-shopping { text-align: center; margin-top: 30px; }
+        .continue-shopping a { background-color: #007bff; color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: 500; transition: background-color 0.3s ease; }
+        .continue-shopping a:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Checkout</h1>
+        {% for item in cart_items %}
+            <div class="checkout-item">
+                <div class="product-info">
+                    <img src="https://via.placeholder.com/80" alt="{{ item.product.name }}">
+                    <div class="product-details">
+                        <h2>{{ item.product.name }}</h2>
+                        <p>Quantity: {{ item.quantity }}</p>
+                    </div>
+                </div>
+                <div class="product-price">${{ item.product.price * item.quantity }}</div>
+            </div>
+        {% endfor %}
+        <p class="total">Total: ${{ total }}</p>
+
+        <div class="form-section">
+            <h2>Shipping Information</h2>
+            <input type="text" placeholder="Full Name" required>
+            <input type="text" placeholder="Address" required>
+            <input type="text" placeholder="City" required>
+            <input type="text" placeholder="Zip Code" required>
+        </div>
+
+        <div class="form-section">
+            <h2>Payment Information</h2>
+            <input type="text" placeholder="Card Number" required>
+            <input type="text" placeholder="Expiration Date" required>
+            <input type="text" placeholder="CVV" required>
+            <button>Complete Purchase</button>
+        </div>
+
+        <div class="continue-shopping">
+            <a href="{{ url_for('index') }}">Continue Shopping</a>
+        </div>
+    </div>
+</body>
+</html>

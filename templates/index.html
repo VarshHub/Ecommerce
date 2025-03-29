@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-commerce</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">E-commerce</a>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/cart">Cart ({{ session.get('cart', {}) | length }})</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Genres</a>
+                <div class="dropdown-content">
+                    <a href="/?genre=Electronics">Electronics</a>
+                    <a href="/?genre=Shopping">Shopping</a>
+                    <a href="/?genre=Books">Books</a>
+                    <a href="/?genre=Fashion">Fashion</a>
+                    <a href="/?genre=Sports">Sports</a>
+                    <a href="/?genre=Cooking">Cooking</a>
+                    <a href="/?genre=Computers">Computers</a>
+                    <a href="/?genre=Mobile">Mobile</a>
+                    <a href="/?genre=Audio">Audio</a>
+                    <a href="/?genre=Wearables">Wearables</a>
+                    <a href="/?genre=Clothing">Clothing</a>
+                    <a href="/?genre=Fiction">Fiction</a>
+                </div>
+            </div>
+            {% if 'username' in session %}
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <section class="products">
+        <h2>Our Products</h2>
+        <div class="product-list">
+            {% for product in products %}
+            <div class="product-item">
+                <h3>{{ product['name'] }}</h3>
+                <p>{{ product['description'] }}</p>
+                <span>${{ product['price'] }}</span>
+                
+                <form action="/add_to_cart/{{ product['id'] }}" method="POST">
+                    <label for="quantity-{{ product['id'] }}">Quantity:</label>
+                    <input type="number" id="quantity-{{ product['id'] }}" name="quantity" value="1" min="1">
+                    <button type="submit" class="btn">Add to Cart</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

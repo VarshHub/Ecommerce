@@ -1,0 +1,366 @@
+/* ======= General Styles ======= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background: #f4f4f4; 
+    padding-top: 80px; /* Prevent content from hiding under header */
+}
+
+/* ======= Header Styling ======= */
+header {
+    background: linear-gradient(135deg, #4CAF50, #673AB7); /* Teal to Purple gradient */
+    color: #fff;
+    padding: 20px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+header .logo a {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+header .logo a:hover {
+    color: #FFD700; /* Gold color on hover */
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #FFD700; /* Gold hover effect */
+    border-bottom: 2px solid #FFD700;
+}
+
+/* ======= Hero Section ======= */
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?shopping,technology') no-repeat center center/cover;
+    height: 80vh;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 60px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    display: inline-block;
+    background: #673AB7; 
+    color: #fff;
+    padding: 15px 35px;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.hero .btn:hover {
+    background: #4CAF50; 
+    transform: scale(1.05);
+}
+
+/* ======= Products Section ======= */
+.products {
+    padding: 80px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 42px;
+    color: #222;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Product Grid Layout */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual Product Styling */
+.product-item {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.product-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.product-item h3 {
+    font-size: 26px;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.product-item p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.product-item span {
+    display: block;
+    font-size: 24px;
+    color: #4CAF50; /* Teal for prices */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ======= Form and Buttons ======= */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input[type="number"], 
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    background: #673AB7;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background: #4CAF50;
+    transform: scale(1.05);
+}
+
+/* ======= Login & Register Pages ======= */
+.form-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container h2 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.form-container .btn {
+    width: 100%;
+}
+
+/* ======= Product Details Page ======= */
+.product-details {
+    max-width: 1200px;
+    margin: 100px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-details img {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.product-details h2 {
+    font-size: 36px;
+    color: #222;
+}
+
+.product-details p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.product-details span {
+    font-size: 24px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* ======= Cart Page ======= */
+.cart {
+    max-width: 1200px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.cart h2 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 40px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+    width: 120px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.cart-item-details {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.cart-item-price {
+    font-size: 20px;
+    color: #673AB7;
+}
+
+/* ======= Footer ======= */
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+}
+
+footer p {
+    font-size: 18px;
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #673AB7;
+}
+
+/* ======= Responsive Design ======= */
+@media (max-width: 768px) {
+    .products, .cart, .product-details, .form-container {
+        padding: 30px;
+    }
+}
+/* style.css */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

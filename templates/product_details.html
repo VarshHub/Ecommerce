@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; }
+        .container { width: 80%; max-width: 800px; margin: 30px auto; background-color: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        h1 { color: #007bff; margin-bottom: 25px; text-align: center; }
+        .product-details img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+        .product-details p { margin-bottom: 15px; line-height: 1.6; }
+         .product-details .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        form { text-align: center; margin-top: 30px; }
+        form input { padding: 12px; border: 1px solid #ddd; border-radius: 8px; width: 100px; margin-right: 10px; }
+        form button { padding: 12px 20px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease; }
+        form button:hover { background-color: #218838; }
+        .genres {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        .checkout-button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .checkout-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ product.name }}</h1>
+        <div class="product-details">
+            <img src="https://via.placeholder.com/600x400" alt="{{ product.name }}">
+            <p>{{ product.description }}</p>
+            <p class="price">Price: ${{ product.price }}</p>
+            {% if product.genres %}
+                <p class="genres">Genres: {{ product.genres }}</p>
+            {% endif %}
+        </div>
+        <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="submit">Add to Cart</button>
+            {% if session.username %}
+                <a href="{{ url_for('checkout') }}" class="checkout-button">Proceed to Checkout</a>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

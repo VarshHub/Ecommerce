@@ -1,0 +1,65 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - E-commerce</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">E-commerce</a>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/cart">Cart ({{ session.get('cart', {}) | length }})</a>
+            {% if 'username' in session %}
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h2>Your Cart</h2>
+        {% if cart_items %}
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.product['name'] }}</td>
+                        <td>${{ item.product['price'] }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.product['price'] * item.quantity }}</td>
+                        <td><a href="{{ url_for('remove_from_cart', product_id=item.product['id']) }}" class="remove-btn">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="cart-total">
+                <strong>Total: ${{ total }}</strong>
+            </div>
+            <br><div class="cart-actions">
+                <a href="/" class="btn">Return to Home</a>
+                <a href="/checkout" class="btn">Proceed to Checkout</a><br>
+            </div>
+        {% else %}
+            <p>Your cart is empty!</p><br>
+            <a href="/" class="btn">Return to Home</a>
+        {% endif %}
+    </section>
+</body>
+</html>
